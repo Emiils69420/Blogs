@@ -1,12 +1,12 @@
 <?php
 require "functions.php";
 require "Database.php";
-
+require "config.php";
 $db = new Database();
 $posts = $db
-    ->execute("SELECT * FROM posts");
-    ->fetchAll(PDO::FETCH_ASSOC);
-    dd($posts)
+    ->execute("SELECT * FROM posts")
+    ->fetchAll();
+
 echo "<ul>";
 foreach($posts as $post){
     
