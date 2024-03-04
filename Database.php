@@ -4,15 +4,8 @@ class Database{
 
 private $pdo;
 
-public function __construct(){
-    $config = [
-        "host" => "localhost",
-        "dbname" => "blog_ipb22",
-        "user" => "root",
-        "password" => "root",
-        "charset" => "utf8mb4"
+public function __construct($config){
 
-    ];
     /*dd("mysql: " . http_build_query($config, "",";"));*/
     $connection_string = "mysql:host=$config[host];dbname=blog_darzins;user=root;password=;charset=utf8mb4";
     $this->pdo = new PDO($connection_string);
