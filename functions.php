@@ -1,9 +1,8 @@
 <?php
 
 function dd($data) {
-
-    echo "<pre>";
-    var_dump($data);
-    echo "</pre>";
-    die(); 
-    }
+  echo "<pre>";
+  var_dump($data);
+  echo "</pre>";
+  die();
+}

@@ -1,24 +1,22 @@
 <?php
 
-class Database{
+class Database {
 
-private $pdo;
+  private $pdo;
 
-public function __construct($config){
-
-    /*dd("mysql: " . http_build_query($config, "",";"));*/
+  // Savienojamies ar datu bāzi tikai vienreiz
+  public function __construct($config)
+  {
     $connection_string = "mysql:host=$config[host];dbname=blog_darzins;user=root;password=;charset=utf8mb4";
     $this->pdo = new PDO($connection_string);
-    $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-}
+    $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+  }
 
-
-    public function execute() {
-
-    $query =  $this->pdo->prepare("SELECT * FROM posts");
-
-    $query->execute();
+  // execute vai query
+  public function execute($query_string, $params) {
+    $query = $this->pdo->prepare($query_string);
+    $query->execute($params);
 
     return $query;
-    }  
+  }
 }
