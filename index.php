@@ -6,33 +6,28 @@ require "Database.php";
 
 $config = require("config.php");
 
+$db = new Database($config);
+
 $query = "SELECT * FROM posts";
 $params = [];
+
 if (isset($_GET["id"]) && $_GET["id"] != "") {
   $id = $_GET["id"];
-  $query = $query. " WHERE id=:id";
-  $params = [":id" => $id];
+  $query .= " WHERE id=:id";
+  $params[":id"] = $id;
 }
-echo "<form>";
-echo "<input name='id'/>";
-echo "<button>Submit</button>";
-echo "</form>";
 
-$db = new Database($config);
+if (isset($_GET["category"]) && $_GET["category"] != "") {
+  $category = trim($_GET["category"]);
+  $query .= " JOIN categories
+              ON posts.category_id = categories.id
+              WHERE categories.name = :category
+            ";
+  $params[":category"] = $category;
+}
+
 $posts = $db
           ->execute($query, $params)
           ->fetchAll();
 
-
-echo "<form>";
-echo "<input name='id'/>";
-echo "<button>Submit</button>";
-echo "</form>";
-
-echo "<h1>Posts</h1>";
-
-echo "<ul>";
-foreach($posts as $post) {
-  echo "<li>" . $post["title"] . "</li>";
-}
-echo "</ul>";
+require "index.view.php";
