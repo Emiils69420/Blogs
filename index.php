@@ -30,4 +30,4 @@ $posts = $db
           ->execute($query, $params)
           ->fetchAll();
 
-require "index.view.php";
+require "views/index.view.php";

@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+<nav>
+<a href="index.php">Main<a>
+<a href="/about.php">About us<a>
+<a href="/story.php">Story💩<a>
+</nav>
+    </header>
 <form>
 <input name='id' value='<?php  ($_GET["id"] ?? "") ?>'/>
 <button>Filter by ID</button>
@@ -28,3 +43,7 @@ foreach($posts as $post) { ?>
 <li> <?= $post["title"]?></li>
 <?php } ?>
 </ul>
+
+<?php require "components/footer.php"?>
+</body>
+</html>
