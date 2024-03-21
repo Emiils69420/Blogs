@@ -1,7 +1,6 @@
 <?php
 // Šis fails ir, lai izvadītu datus no datubāzes uz
 // lapu 
-require "functions.php";
 require "Database.php";
 
 $config = require("config.php");
@@ -29,5 +28,6 @@ if (isset($_GET["category"]) && $_GET["category"] != "") {
 $posts = $db
           ->execute($query, $params)
           ->fetchAll();
-
-require "views/index.view.php";
+          
+$title = "Posts 🙂";
+require "views/posts.view.php";

@@ -1,7 +1,7 @@
 <header>
-<nav>
-<a href="index">Main</a>
-<a href="about">About us</a>
-<a href="story">Story</a>
-</nav>
+  <nav>
+    <a href="/">Posts</a>
+    <a href="/about">About Us</a>
+    <a href="/create">Create a Post</a>
+  </nav>
 </header>
